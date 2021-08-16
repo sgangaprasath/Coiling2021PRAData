@@ -1,0 +1,76 @@
+\documentclass[preview,border=0pt,varwidth=2\linewidth]{standalone}
+\usepackage{graphicx,pgfplotstable}
+\usepackage{tikz} 
+\usetikzlibrary{arrows}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.10}
+
+\definecolor{blues1}{RGB}{198, 219, 239}
+\definecolor{blues2}{RGB}{158, 202, 225}
+\definecolor{blues3}{RGB}{107, 174, 214}
+\definecolor{blues4}{RGB}{89, 130, 189}
+\definecolor{blues5}{RGB}{69, 81, 156}
+\definecolor{blues6}{RGB}{49, 10, 156}
+\definecolor{blues7}{RGB}{89, 40, 106}
+
+\definecolor{purpleMod}{rgb}{0.6,0.1,0.3}%
+\definecolor{blueMod}{rgb}{0.1,0.1,0.7}%
+
+\pgfplotscreateplotcyclelist{colorbrewer-blues}{
+    {blues1},
+    {blues2},
+    {blues3},
+    {blues4},
+    {blues5},
+}
+
+\begin{document}
+	\begin{figure}
+	\centering
+    \begin{tikzpicture}
+	\begin{axis}[
+	ylabel near ticks,	
+	width=13cm,
+	height=8cm,
+	xmin=1,
+%	xmax=2*pi,
+	xmax=7,
+	ymin=0.0,
+	ymax=1.1,
+	xlabel=$\varphi$,
+	ylabel=$\alpha$,
+	mark options={scale=0.8},
+	label style={font=\large},
+	tick label style={font=\large},
+	clip mode=individual,
+	]
+	\addplot+[color=black,only marks,mark=*,opacity=0.7,mark options={fill=blues7!60,scale=1.25},forget plot] table {./alpha_0_131.txt};
+	\addplot+[no marks,dashdotted,thick,color=blues7] file {./Alpha_0_131_Th.txt};
+	\addplot+[no marks,solid,thick,color=blues7] file {./new/Alpha_0_131_Th.txt};
+	
+	\addplot+[only marks,mark=square*,opacity=0.7,mark options={fill=black!60},forget plot] table {./alpha_0_09.txt};
+	\addplot+[no marks,dashdotted,thick,color=black] file {./Alpha_0_09_Th.txt};
+	\addplot+[no marks,solid,thick,color=black] file {./new/Alpha_0_09_Th.txt};
+	
+	\addplot+[only marks,mark=triangle*,mark options={fill=blues6!60,scale=1.5},forget plot] table {./alpha_0_08.txt};
+	\addplot+[no marks,dashdotted,thick,color=blues6] file {./Alpha_0_08_Th.txt};
+	\addplot+[no marks,solid,thick,color=blues6] file {./new/Alpha_0_08_Th.txt};
+	
+	\addplot+[only marks,mark=diamond*,opacity=0.7,mark options={fill=blues4!60,scale=1.5},forget plot] table {./alpha_0_058.txt};
+	\addplot+[no marks,dashdotted,thick,color=blues4] file {./Alpha_0_058_Th.txt};
+	\addplot+[no marks,solid,thick,color=blues4] file {./new/Alpha_0_058_Th.txt};
+
+	\addplot+[only marks,mark=otimes*,mark options={fill=blues2!60,scale=1.5},forget plot] table {./alpha_0_038.txt};
+	\addplot+[no marks,dashdotted,thick,color=blues2] file {./Alpha_0_038_Th.txt};
+	\addplot+[no marks,solid,thick,color=blues2] file {./new/Alpha_0_038_Th.txt};
+	
+	\addplot+[smooth, solid, mark=*,very thick,color=black,mark options={fill=black!85,scale=1.25}] file {./Alpha_numerics1.txt};
+	\addplot+[smooth, solid, mark=*,very thick,color=black,mark options={fill=black!85,scale=1.25}] file {./Alpha_numerics2.txt};
+	\addplot[name path=f,thick,samples=400,domain=-10:10,restrict y to domain=-10:20,fill=gray,opacity=0.2,forget plot] (x,{pi/x})\closedcycle;	
+	\addplot[no marks,thick,color=black,samples=400,domain=-10:7,restrict y to domain=-10:20,forget plot] (x,{pi/x}) node[pos=0.5,pin={15:$\pi$},inner sep=0pt] {};
+%	\addplot[thick,dashed,samples=100,restrict y to domain=0:20] ({pi},x) node[pos=0.05,pin={15:$\pi$},inner sep=0pt] {};
+	\addplot[thin,dashed,opacity=0.5,samples=100,restrict y to domain=0:1.5] ({pi},x) node[pos=0.05,below] {};
+	\end{axis}
+	\end{tikzpicture}
+	\end{figure}	
+\end{document}

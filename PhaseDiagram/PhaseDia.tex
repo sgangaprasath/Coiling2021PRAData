@@ -1,0 +1,134 @@
+\documentclass[preview,border=0pt,varwidth=2\linewidth]{standalone}
+\usepackage{graphicx,pgfplotstable}
+\usepackage{tikz} 
+\usetikzlibrary{arrows}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.10}
+
+
+\definecolor{longit}{RGB}{48,158,43}
+\definecolor{latit}{RGB}{227,25,25}
+\definecolor{coilph}{RGB}{255,125,0}
+
+
+\usepgfplotslibrary{colorbrewer}
+
+\pgfplotscreateplotcyclelist{colorbrewer-blues}{
+    {blues1},
+    {blues2},
+    {blues3},
+    {blues4},
+    {coilph},
+}
+
+\begin{document}
+	\begin{figure}
+	\centering
+    \begin{tikzpicture}
+	\begin{loglogaxis}[
+	ylabel near ticks,	
+	width=7cm,
+	height=4.5cm,
+	xmin=1e-2,
+	xmax=8.0,
+	ymin=0.8,
+	ymax=10,
+	xlabel=$\Omega^{-1}_g$,
+	ylabel=$\varphi$,
+	mark options={scale=0.8},
+	label style={font=\large},
+	tick label style={font=\large},
+	clip mode=individual,
+%	cycle list/Paired-5,
+	ytick={
+		1, 3.14159, 6.28318, 9.42477
+	},
+	yticklabels={
+		1, $\pi$, $2\pi$, $3\pi$
+	}
+	]
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/1/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/1/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/1/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/1/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/2/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/2/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/2/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/2/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/3/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/3/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/3/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/3/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/4/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/4/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/4/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/4/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/5/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/5/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/5/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/5/coil.txt};
+	
+	%%%%%%%%%%%%%
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/6/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/6/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/6/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/6/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/7/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/7/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/7/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/7/coil.txt};
+	
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/8/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/8/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/8/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/8/coil.txt};
+
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/9/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/9/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/9/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/9/coil.txt};
+
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/10/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/10/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/10/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/10/coil.txt};
+
+	\addplot[color=black,dashed,thin,no marks] table[x expr=\thisrowno{0}/16, y index=1] {./data/11/Analytic.txt};
+		
+	\addplot[color=longit,only marks,mark=*,opacity=0.6] table[x expr=\thisrowno{0}/16, y index=1] {./data/11/long.txt};
+	\addplot[color=latit,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/11/lat.txt};
+	\addplot[color=coilph,only marks,mark=*,opacity=0.68] table[x expr=\thisrowno{0}/16, y index=1] {./data/11/coil.txt};
+
+%%%%%%%%%%%%%%%%%% Fixed end theory %%%%%%%%%%%%%%%%%%%%%%
+	\addplot+[name path=E,no marks,thick,color=black] file {./data/phase_diag_18_Oct.txt};
+%	\addplot+[draw=none,no marks,color=longit,domain=0:3,name path=F] {0.001};
+%	\addplot+[longit, fill opacity=0.3] fill between[of=E and F,soft clip={domain=0.001:10}];
+	\addplot+[domain=0.001:40, thick, dash dot, no marks, color=black] {2*pi};
+%	\addplot+[draw=none,no marks,color=latit,domain=0.001:3,name path=G] {10.0};
+%	\addplot+[latit, fill opacity=0.3] fill between[of=G and E,soft clip={domain=0.001:10}];	
+%	\addplot+[smooth,name path=G,solid,no marks,thick,color=green4] file {./data/lat_trans_new.dat};
+%	\addplot+[draw=none,no marks,color=gray,domain=0:40,name path=F] {4};
+%	\addplot+[longit, fill opacity=0.7] fill between[of=G and F,soft clip={domain=0:10}];
+	\node [rotate=0] at (axis cs:0.75,2) {{\large {\textsf{Longitude}}}}; 	
+	
+	\end{loglogaxis}
+	\end{tikzpicture}
+	
+	\end{figure}	
+\end{document}
